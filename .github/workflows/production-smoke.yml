@@ -1,0 +1,16 @@
+name: Production smoke test
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'  # every 15 minutes
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run smoke test
+        run: node copa2026/smoke-test.js --verbose

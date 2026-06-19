@@ -1,0 +1,27 @@
+name: TLS cert expiry check
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # every Monday at 09:00 UTC
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Check days remaining
+        run: |
+          EXPIRY=$(echo | openssl s_client \
+            -connect copa2026.mpbarbosa.com:443 \
+            -servername copa2026.mpbarbosa.com 2>/dev/null \
+            | openssl x509 -noout -enddate \
+            | cut -d= -f2)
+          EXPIRY_EPOCH=$(date -d "$EXPIRY" +%s)
+          NOW_EPOCH=$(date +%s)
+          DAYS=$(( (EXPIRY_EPOCH - NOW_EPOCH) / 86400 ))
+          echo "Certificate expires: $EXPIRY ($DAYS days remaining)"
+          if [ "$DAYS" -lt 30 ]; then
+            echo "::error::Certificate expires in $DAYS days — renew immediately"
+            exit 1
+          fi

@@ -1,0 +1,65 @@
+{
+  "widgets": [
+    {
+      "type": "metric",
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "Availability — health endpoint (%)",
+        "metrics": [
+          ["CloudWatchSynthetics", "SuccessPercent", "CanaryName", "copa2026-health"]
+        ],
+        "period": 300,
+        "stat": "Average",
+        "view": "timeSeries",
+        "yAxis": { "left": { "min": 0, "max": 100 } },
+        "region": "sa-east-1"
+      }
+    },
+    {
+      "type": "metric",
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "Availability — root page (%)",
+        "metrics": [
+          ["CloudWatchSynthetics", "SuccessPercent", "CanaryName", "copa2026-root"]
+        ],
+        "period": 300,
+        "stat": "Average",
+        "view": "timeSeries",
+        "yAxis": { "left": { "min": 0, "max": 100 } },
+        "region": "sa-east-1"
+      }
+    },
+    {
+      "type": "metric",
+      "width": 24,
+      "height": 6,
+      "properties": {
+        "title": "Canary duration (ms)",
+        "metrics": [
+          ["CloudWatchSynthetics", "Duration", "CanaryName", "copa2026-health", { "label": "health" }],
+          ["CloudWatchSynthetics", "Duration", "CanaryName", "copa2026-root",   { "label": "root"   }]
+        ],
+        "period": 300,
+        "stat": "Average",
+        "view": "timeSeries",
+        "region": "sa-east-1"
+      }
+    },
+    {
+      "type": "alarm",
+      "width": 24,
+      "height": 4,
+      "properties": {
+        "title": "Alarm status",
+        "alarms": [
+          "arn:aws:cloudwatch:sa-east-1:655139684612:alarm:copa2026-health-down",
+          "arn:aws:cloudwatch:sa-east-1:655139684612:alarm:copa2026-root-down",
+          "arn:aws:cloudwatch:sa-east-1:655139684612:alarm:copa2026-cert-expiry"
+        ]
+      }
+    }
+  ]
+}
