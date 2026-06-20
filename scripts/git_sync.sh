@@ -17,7 +17,7 @@
 # Repository: https://github.com/mpbarbosa/devops
 # License: MIT
 
-readonly SCRIPT_VERSION="1.0.0"
+readonly SCRIPT_VERSION="1.0.1"
 readonly GITHUB_DIR="$HOME/Documents/GitHub"
 readonly LOG_FILE="$HOME/.local/log/git_sync.log"
 readonly LOG_MAX_BYTES=512000   # 500 KB
@@ -141,6 +141,15 @@ for repo_dir in "$GITHUB_DIR"/*/; do
   if (( pull_rc == 0 )); then
     log INFO "$repo: pulled OK"
     (( pulled++ ))
+    if [[ "$repo" == "agora_na_copa_2026" ]]; then
+      local_sync="$repo_dir/scripts/git_sync.sh"
+      if [[ -x "$local_sync" ]]; then
+        log INFO "$repo: running $local_sync"
+        bash "$local_sync" 2>&1 | while IFS= read -r line; do log INFO "$repo/git_sync: $line"; done
+      else
+        log WARN "$repo: $local_sync not found or not executable — skipping"
+      fi
+    fi
   else
     log ERROR "$repo: pull failed — ${pull_out//[$'\n']/ }"
     (( errors++ ))
