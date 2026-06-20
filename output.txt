@@ -1,0 +1,99 @@
+[INFO] === git_sync started (v1.0.5) ===
+[INFO] checking /home/ubuntu/Documents/GitHub/agora_na_copa_2026/
+[INFO] agora_na_copa_2026: looking for remote
+[INFO] agora_na_copa_2026: remote is 'origin'
+[INFO] agora_na_copa_2026: fetching from origin
+[INFO] agora_na_copa_2026: fetch OK
+[INFO] agora_na_copa_2026: resolving upstream tracking branch
+[INFO] agora_na_copa_2026: upstream is 'origin/main'
+[INFO] agora_na_copa_2026: counting commits behind origin/main
+[INFO] agora_na_copa_2026: 2 commit(s) behind
+[INFO] agora_na_copa_2026: checking for local changes
+[INFO] agora_na_copa_2026: working tree clean
+[INFO] agora_na_copa_2026: pulling
+[INFO] agora_na_copa_2026: pulled OK
+[WARN] agora_na_copa_2026: /home/ubuntu/Documents/GitHub/agora_na_copa_2026//copa_2026/prod_deploy.sh not found or not executable — skipping
+[WARN] agora_na_copa_2026: /home/ubuntu/Documents/GitHub/agora_na_copa_2026//scripts/git_sync.sh not found or not executable — skipping
+[INFO] checking /home/ubuntu/Documents/GitHub/busca_vagas/
+[INFO] busca_vagas: looking for remote
+[INFO] busca_vagas: remote is 'origin'
+[INFO] busca_vagas: fetching from origin
+[INFO] busca_vagas: fetch OK
+[INFO] busca_vagas: resolving upstream tracking branch
+[INFO] busca_vagas: upstream is 'origin/main'
+[INFO] busca_vagas: counting commits behind origin/main
+[INFO] busca_vagas: up to date
+[INFO] checking /home/ubuntu/Documents/GitHub/devops/
+[INFO] devops: looking for remote
+[INFO] devops: remote is 'origin'
+[INFO] devops: fetching from origin
+[INFO] devops: fetch OK
+[INFO] devops: resolving upstream tracking branch
+[INFO] devops: upstream is 'origin/main'
+[INFO] devops: counting commits behind origin/main
+[INFO] devops: up to date
+[INFO] checking /home/ubuntu/Documents/GitHub/dotfiles/
+[INFO] dotfiles: looking for remote
+[INFO] dotfiles: remote is 'origin'
+[INFO] dotfiles: fetching from origin
+[INFO] dotfiles: fetch OK
+[INFO] dotfiles: resolving upstream tracking branch
+[INFO] dotfiles: upstream is 'origin/main'
+[INFO] dotfiles: counting commits behind origin/main
+[INFO] dotfiles: up to date
+[INFO] checking /home/ubuntu/Documents/GitHub/guia_turistico/
+[INFO] guia_turistico: looking for remote
+[INFO] guia_turistico: remote is 'origin'
+[INFO] guia_turistico: fetching from origin
+[WARN] guia_turistico: fetch failed — ERROR: Repository not found. fatal: Could not read from remote repository.  Please make sure you have the correct access rights and the repository exists.
+[INFO] checking /home/ubuntu/Documents/GitHub/mpbarbosa.com/
+[INFO] mpbarbosa.com: looking for remote
+[INFO] mpbarbosa.com: remote is 'origin'
+[INFO] mpbarbosa.com: fetching from origin
+[INFO] mpbarbosa.com: fetch OK
+[INFO] mpbarbosa.com: resolving upstream tracking branch
+[INFO] mpbarbosa.com: upstream is 'origin/main'
+[INFO] mpbarbosa.com: counting commits behind origin/main
+[INFO] mpbarbosa.com: 1 commit(s) behind
+[INFO] mpbarbosa.com: checking for local changes
+[INFO] mpbarbosa.com: working tree clean
+[INFO] mpbarbosa.com: pulling
+[INFO] mpbarbosa.com: pulled OK
+[WARN] mpbarbosa.com: /home/ubuntu/Documents/GitHub/mpbarbosa.com//copa_2026/prod_deploy.sh not found or not executable — skipping
+[INFO] checking /home/ubuntu/Documents/GitHub/mpbarbosa_site/
+[INFO] mpbarbosa_site: looking for remote
+[INFO] mpbarbosa_site: remote is 'origin'
+[INFO] mpbarbosa_site: fetching from origin
+[INFO] mpbarbosa_site: fetch OK
+[INFO] mpbarbosa_site: resolving upstream tracking branch
+[INFO] mpbarbosa_site: upstream is 'origin/main'
+[INFO] mpbarbosa_site: counting commits behind origin/main
+[INFO] mpbarbosa_site: up to date
+[INFO] checking /home/ubuntu/Documents/GitHub/onde_estou_backend/
+[INFO] onde_estou_backend: looking for remote
+[INFO] onde_estou_backend: remote is 'origin'
+[INFO] onde_estou_backend: fetching from origin
+[INFO] onde_estou_backend: fetch OK
+[INFO] onde_estou_backend: resolving upstream tracking branch
+[INFO] onde_estou_backend: upstream is 'origin/main'
+[INFO] onde_estou_backend: counting commits behind origin/main
+[INFO] onde_estou_backend: up to date
+[INFO] checking /home/ubuntu/Documents/GitHub/scripts/
+[INFO] scripts: looking for remote
+[INFO] scripts: remote is 'origin'
+[INFO] scripts: fetching from origin
+[INFO] scripts: fetch OK
+[INFO] scripts: resolving upstream tracking branch
+[INFO] scripts: upstream is 'origin/main'
+[INFO] scripts: counting commits behind origin/main
+[INFO] scripts: up to date
+[INFO] checking /home/ubuntu/Documents/GitHub/sysmon/
+[INFO] sysmon: looking for remote
+[INFO] sysmon: remote is 'origin'
+[INFO] sysmon: fetching from origin
+[INFO] sysmon: fetch OK
+[INFO] sysmon: resolving upstream tracking branch
+[INFO] sysmon: upstream is 'origin/main'
+[INFO] sysmon: counting commits behind origin/main
+[INFO] sysmon: up to date
+[INFO] === git_sync done: pulled=2 skipped=0 errors=1 ===
