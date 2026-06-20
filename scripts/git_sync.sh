@@ -17,7 +17,7 @@
 # Repository: https://github.com/mpbarbosa/devops
 # License: MIT
 
-readonly SCRIPT_VERSION="1.0.5"
+readonly SCRIPT_VERSION="1.0.6"
 readonly GITHUB_DIR="$HOME/Documents/GitHub"
 readonly LOG_FILE="$HOME/.local/log/git_sync.log"
 readonly LOG_MAX_BYTES=512000   # 500 KB
@@ -147,24 +147,21 @@ for repo_dir in "$GITHUB_DIR"/*/; do
       if [[ -x "$prod_deploy" ]]; then
         log INFO "$repo: running $prod_deploy"
         bash "$prod_deploy" 2>&1 | while IFS= read -r line; do log INFO "$repo/prod_deploy: $line"; done
+      elif [[ ! -f "$prod_deploy" ]]; then
+        log WARN "$repo: $prod_deploy not found — skipping"
       else
-        log WARN "$repo: $prod_deploy not found or not executable — skipping"
-      fi
-      local_sync="$repo_dir/scripts/git_sync.sh"
-      if [[ -x "$local_sync" ]]; then
-        log INFO "$repo: running $local_sync"
-        bash "$local_sync" 2>&1 | while IFS= read -r line; do log INFO "$repo/git_sync: $line"; done
-      else
-        log WARN "$repo: $local_sync not found or not executable — skipping"
+        log WARN "$repo: $prod_deploy not executable — skipping (run: chmod +x $prod_deploy)"
       fi
     fi
     if [[ "$repo" == "mpbarbosa.com" ]]; then
-      prod_deploy="$repo_dir/copa_2026/prod_deploy.sh"
+      prod_deploy="$GITHUB_DIR/devops/copa_2026/prod_deploy.sh"
       if [[ -x "$prod_deploy" ]]; then
         log INFO "$repo: running $prod_deploy"
         bash "$prod_deploy" 2>&1 | while IFS= read -r line; do log INFO "$repo/prod_deploy: $line"; done
+      elif [[ ! -f "$prod_deploy" ]]; then
+        log WARN "$repo: $prod_deploy not found — skipping"
       else
-        log WARN "$repo: $prod_deploy not found or not executable — skipping"
+        log WARN "$repo: $prod_deploy not executable — skipping (run: chmod +x $prod_deploy)"
       fi
     fi
   else
