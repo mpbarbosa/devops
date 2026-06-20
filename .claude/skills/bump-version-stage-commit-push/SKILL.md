@@ -19,34 +19,71 @@ repository:
 5. Commit
 6. Push the current branch
 
-This is a shell-scripts repository with no build system. The canonical version
-source is the `SCRIPT_VERSION` variable in `scripts/git_sync.sh`.
+The version source and bump method depend on which repo is being released.
+Detect the repo from the `repo=` argument or the current working directory,
+then follow the repo-specific rules below.
 
 ---
 
-## Canonical version file
+## Canonical version files by repo
+
+### devops (`~/Documents/GitHub/devops`)
 
 | File | Rule |
 |------|------|
-| `scripts/git_sync.sh` | Contains `readonly SCRIPT_VERSION="X.Y.Z"` — this is the only version to update |
+| `scripts/git_sync.sh` | Contains `readonly SCRIPT_VERSION="X.Y.Z"` |
 
-Bump by editing that line with `sed`. Default to a **patch** bump (increment
-the last number) unless the user specifies minor or major.
-
-Example (patch bump from 1.0.0 → 1.0.1):
-
-```bash
-sed -i 's/^readonly SCRIPT_VERSION="[0-9]*\.[0-9]*\.\([0-9]*\)"/readonly SCRIPT_VERSION="1.0.1"/' scripts/git_sync.sh
-```
-
-Use the actual current version from the file — do not hardcode. Read the
-current value first:
+Read the current value:
 
 ```bash
 grep 'SCRIPT_VERSION=' scripts/git_sync.sh
 ```
 
-Then compute the new value and apply it with `sed -i`.
+Bump with `sed -i`. Default to a **patch** bump unless the user specifies otherwise.
+
+### agora_na_copa_2026 (`~/Documents/GitHub/agora_na_copa_2026`)
+
+| File | Rule |
+|------|------|
+| `package.json` | Canonical version; `package-lock.json` must stay in sync |
+
+Bump with:
+
+```bash
+npm version patch --no-git-tag-version
+```
+
+Stage both files:
+
+```bash
+git add package.json package-lock.json
+```
+
+### mpbarbosa.com (`~/Documents/GitHub/mpbarbosa.com`)
+
+| File | Rule |
+|------|------|
+| `humans.txt` | Contains `Version: X.Y.Z` line under the `/* SITE */` section |
+
+Read the current value:
+
+```bash
+grep 'Version:' humans.txt
+```
+
+Bump with `sed -i`. Default to a **patch** bump unless the user specifies otherwise.
+
+Example (patch bump from 1.0.0 → 1.0.1):
+
+```bash
+sed -i 's/^Version: [0-9]*\.[0-9]*\.[0-9]*/Version: 1.0.1/' humans.txt
+```
+
+Stage the file:
+
+```bash
+git add humans.txt
+```
 
 ---
 

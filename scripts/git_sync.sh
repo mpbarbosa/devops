@@ -17,7 +17,7 @@
 # Repository: https://github.com/mpbarbosa/devops
 # License: MIT
 
-readonly SCRIPT_VERSION="1.0.2"
+readonly SCRIPT_VERSION="1.0.3"
 readonly GITHUB_DIR="$HOME/Documents/GitHub"
 readonly LOG_FILE="$HOME/.local/log/git_sync.log"
 readonly LOG_MAX_BYTES=512000   # 500 KB
