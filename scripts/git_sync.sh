@@ -17,7 +17,7 @@
 # Repository: https://github.com/mpbarbosa/devops
 # License: MIT
 
-readonly SCRIPT_VERSION="1.0.1"
+readonly SCRIPT_VERSION="1.0.2"
 readonly GITHUB_DIR="$HOME/Documents/GitHub"
 readonly LOG_FILE="$HOME/.local/log/git_sync.log"
 readonly LOG_MAX_BYTES=512000   # 500 KB
@@ -148,6 +148,15 @@ for repo_dir in "$GITHUB_DIR"/*/; do
         bash "$local_sync" 2>&1 | while IFS= read -r line; do log INFO "$repo/git_sync: $line"; done
       else
         log WARN "$repo: $local_sync not found or not executable — skipping"
+      fi
+    fi
+    if [[ "$repo" == "mpbarbosa.com" ]]; then
+      prod_deploy="$repo_dir/copa_2026/prod_deploy.sh"
+      if [[ -x "$prod_deploy" ]]; then
+        log INFO "$repo: running $prod_deploy"
+        bash "$prod_deploy" 2>&1 | while IFS= read -r line; do log INFO "$repo/prod_deploy: $line"; done
+      else
+        log WARN "$repo: $prod_deploy not found or not executable — skipping"
       fi
     fi
   else
