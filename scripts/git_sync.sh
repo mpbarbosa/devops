@@ -77,6 +77,7 @@ skipped=0
 errors=0
 
 for repo_dir in "$GITHUB_DIR"/*/; do
+  repo_dir="${repo_dir%/}"
   log INFO "checking $repo_dir"
 
   if [[ ! -d "$repo_dir/.git" ]]; then
