@@ -17,7 +17,7 @@
 # Repository: https://github.com/mpbarbosa/devops
 # License: MIT
 
-readonly SCRIPT_VERSION="1.0.6"
+readonly SCRIPT_VERSION="1.0.7"
 readonly GITHUB_DIR="$HOME/Documents/GitHub"
 readonly LOG_FILE="$HOME/.local/log/git_sync.log"
 readonly LOG_MAX_BYTES=512000   # 500 KB
@@ -143,7 +143,7 @@ for repo_dir in "$GITHUB_DIR"/*/; do
     log INFO "$repo: pulled OK"
     (( pulled++ ))
     if [[ "$repo" == "agora_na_copa_2026" ]]; then
-      prod_deploy="$repo_dir/copa_2026/prod_deploy.sh"
+      prod_deploy="$repo_dir/shell_scripts/06_redeploy.sh"
       if [[ -x "$prod_deploy" ]]; then
         log INFO "$repo: running $prod_deploy"
         bash "$prod_deploy" 2>&1 | while IFS= read -r line; do log INFO "$repo/prod_deploy: $line"; done
