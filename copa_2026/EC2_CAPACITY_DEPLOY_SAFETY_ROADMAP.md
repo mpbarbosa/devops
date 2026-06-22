@@ -63,6 +63,14 @@ swapon --show
 
 ## Phase 2 — Build off-host (the real fix: never build on prod)
 
+> **✅ IMPLEMENTED (2026-06-22)** — `shell_scripts/10_go_live.sh` (`npm run go-live`).
+> On prod, run it **instead of `npm run deploy`**: it `git pull`s the prebuilt payload
+> into the mpbarbosa.com checkout, then runs `06_redeploy.sh` with `AGORA_STAGING_DIR`
+> pinned to that payload — so it rsyncs + `npm ci --omit=dev` + restarts with **no
+> vite/esbuild on the box**. New prod go-live:
+> `cd ~/Documents/GitHub/agora_na_copa_2026 && git pull && npm run go-live`
+> (one-time prereq: the mpbarbosa.com repo cloned on the host).
+
 The dev machine's `scripts/deploy.sh` already builds `dist/` and publishes the
 **prebuilt** payload to the `mpbarbosa.com` repo. Prod's go-live should consume
 that prebuilt payload only — **no vite/esbuild/tsc on prod**.
